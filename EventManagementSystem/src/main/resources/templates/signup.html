@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign_up</title>
-    <!-- <link rel="stylesheet" th:href="@{/css/signup.css}"> -->
-     <link rel="stylesheet" href="../static/css/signup.css">
+     <link rel="stylesheet" th:href="@{css/signup.css}">
+     <link rel="stylesheet" th:href="@{css/base.css}">
 </head>
 <body>
     <div class="main-container">
@@ -25,6 +25,10 @@
                         <input type="password" name="password" id="password" placeholder="Password">
                     </div>
                     <div class="form-group">
+                        <label for="confirm-password"></label>
+                        <input type="confirm-password" name="confirm-password" id="confirm-password" placeholder="Confirm-Password">
+                    </div>
+                    <div class="form-group">
                         <label for="contact"></label>
                         <input type="text" name="contact" id="contact" placeholder="Your Contact Number" maxlength="10" pattern="[0-9]{10}" title="Please enter exactly 10 digits">
                     </div>
@@ -36,7 +40,7 @@
             </div>
             <div class="signup-image">
                 <figure>
-                    <img src="../static/images/signup-img.jpeg" alt="Signup Image">
+                    <img th:src="@{images/signup-img.jpeg}" alt="Signup Image">
                 </figure>
                 <a href="/login" class="signup-image-link">I am already a member</a>
             </div>
