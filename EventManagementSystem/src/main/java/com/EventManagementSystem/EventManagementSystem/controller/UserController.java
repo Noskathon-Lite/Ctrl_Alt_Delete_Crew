@@ -1,4 +1,4 @@
 package com.EventManagementSystem.EventManagementSystem.controller;
 
-public class UserCintroller {
+public class UserController {
 }
