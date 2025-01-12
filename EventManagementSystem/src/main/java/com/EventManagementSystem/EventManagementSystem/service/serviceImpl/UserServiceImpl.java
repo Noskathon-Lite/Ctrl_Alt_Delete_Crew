@@ -1,4 +1,6 @@
 package com.EventManagementSystem.EventManagementSystem.service.serviceImpl;
 
-public class UserServiceImpl {
+import com.EventManagementSystem.EventManagementSystem.service.UserService;
+
+public class UserServiceImpl implements UserService {
 }
