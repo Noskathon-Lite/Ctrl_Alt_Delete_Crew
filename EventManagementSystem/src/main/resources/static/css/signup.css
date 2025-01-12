@@ -45,6 +45,11 @@ body {
     position: relative;
     margin-bottom: 20px;
   }
+  .show-hide_buttons{
+    position: absolute;
+    right: -1.5rem;
+    top: 0.6rem;
+  }
   
   .form-group label {
     position: absolute;
@@ -83,13 +88,23 @@ body {
   .form-submit:hover {
     background-color: #005bb5;
   }
-  
+  .bx-hide{
+    cursor: pointer;
+}
+#bx-show-login,#bx-show-confirm{
+    display: none ;
+    cursor:pointer;
+}
+
   /* Image Section */
   .signup-image {
     /* width: 50%; */
     text-align: center;
     padding: 30px;
     background-color: #fff;
+  }
+  .signup-image figure{
+    margin: 0;
   }
   
   .signup-image img {
