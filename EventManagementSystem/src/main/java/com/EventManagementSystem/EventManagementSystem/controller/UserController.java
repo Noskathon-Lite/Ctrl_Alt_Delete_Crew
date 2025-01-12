@@ -76,6 +76,8 @@ public class UserController {
         emailSenderService.sendEmail(subject, body);
         return "Email sent successfully to all users";
     }
+    
+   
 
 
 }
