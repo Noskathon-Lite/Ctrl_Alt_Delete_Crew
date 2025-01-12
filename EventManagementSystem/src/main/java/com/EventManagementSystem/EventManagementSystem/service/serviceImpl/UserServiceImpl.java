@@ -70,15 +70,15 @@ public class UserServiceImpl implements UserService {
         verifyUserRepository.save(verifyUser);
     }
 
-    @Override
-    public String verify(AuthRequest authRequest) {
-        Authentication authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword()));
-        if (authentication.isAuthenticated()) {
-//            return jwtService.generateToken(user.getUserName());
-            return "logged in";
-        } else {
-//            return "fail";
-            throw new UsernameNotFoundException("invalid user request !");
-        }
-    }
+//    @Override
+//    public String verify(AuthRequest authRequest) {
+//        Authentication authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword()));
+//        if (authentication.isAuthenticated()) {
+////            return jwtService.generateToken(user.getUserName());
+//            return "logged in";
+//        } else {
+////            return "fail";
+//            throw new UsernameNotFoundException("invalid user request !");
+//        }
+//    }
 }

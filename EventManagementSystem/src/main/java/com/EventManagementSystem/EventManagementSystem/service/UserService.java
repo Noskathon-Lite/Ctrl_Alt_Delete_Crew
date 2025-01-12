@@ -17,5 +17,5 @@ public interface UserService {
 
     void saveVerifyUser(byte[] citizenshipImage, byte[] userImage);
 
-    String verify(AuthRequest authRequest);
+//    String verify(AuthRequest authRequest);
 }

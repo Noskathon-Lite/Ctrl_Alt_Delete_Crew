@@ -26,10 +26,10 @@ public class UserController {
         this.emailSenderService = emailSenderService;
     }
 
-    @PostMapping("/login")
-    public String login(@RequestBody AuthRequest authRequest){
-        return userService.verify(authRequest);
-    }
+//    @PostMapping("/login")
+//    public String login(@RequestBody AuthRequest authRequest){
+//        return userService.verify(authRequest);
+//    }
 
 
 
