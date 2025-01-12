@@ -4,23 +4,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class FrontendRender {
-    @GetMapping("/signup")
-    public String signup() {
-        return "signup";
+    @GetMapping("/admin/admin-dashboard")
+    public String adminDashboard() {
+        return "admin/admin__dashboard";
     }
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public String home() {
         return "index";
     }
-//    @GetMapping("/login")
-//    public String login() {
-//        return "login";
-//    }
-    
-    @GetMapping("/signin")
+
+
+    @GetMapping("/sign-in")
     public String signin() {
         return "signin";
+    }
+
+    @GetMapping("/signup")
+    public String signup() {
+        return "signup";
     }
 
     

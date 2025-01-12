@@ -110,7 +110,6 @@ public class UserServiceImpl implements UserService {
         return "Images uploaded successfully for IdentifyUser with ID: " + userId;
     }
 
-
     public byte[] downloadImageForIdentifyUser(Long userId, String imageType) throws IOException {
         // Check if the user exists in the User table
         User user = userRepository.findById(userId)
@@ -169,17 +168,5 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-
-    @Override
-    public String verify(AuthRequest authRequest) {
-        Authentication authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword()));
-        if (authentication.isAuthenticated()) {
-//            return jwtService.generateToken(user.getUserName());
-            return "logged in";
-        } else {
-//            return "fail";
-            throw new UsernameNotFoundException("invalid user request !");
-        }
-    }
 
 }

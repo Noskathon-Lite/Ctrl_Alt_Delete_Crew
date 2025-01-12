@@ -16,10 +16,10 @@
       </div>
       <div class="login-box">
         <h2>Sign in</h2>
-        <form class="signin-form" action="/login" method="post">
+        <form class="signin-form" th:action="@{/sign-in}" method="post">
             <div class="form-group">
                 <label for="name"></label>
-                <input type="text" name="userName" id="name" placeholder="User Name">
+                <input type="text" name="username" id="name" placeholder="User Name">
             </div>
             <div class="form-group">
                 <label for="password"></label>
