@@ -3,6 +3,7 @@ package com.EventManagementSystem.EventManagementSystem.controller;
 
 import com.EventManagementSystem.EventManagementSystem.dto.AuthRequest;
 import com.EventManagementSystem.EventManagementSystem.dto.UserDTO;
+import com.EventManagementSystem.EventManagementSystem.service.EmailSenderService;
 import com.EventManagementSystem.EventManagementSystem.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -17,15 +18,20 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UserController {
 
+
     private final UserService userService;
-    public UserController(UserService userService) {
+    private final EmailSenderService emailSenderService;
+    public UserController(UserService userService, EmailSenderService emailSenderService) {
         this.userService = userService;
+        this.emailSenderService = emailSenderService;
     }
 
     @PostMapping("/login")
     public String login(@RequestBody AuthRequest authRequest){
         return userService.verify(authRequest);
     }
+
+
 
     // API to create a new user
     @PostMapping("/register-user")
@@ -60,6 +66,15 @@ public class UserController {
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload images.");
         }
+    }
+
+    //Send email Api
+    @GetMapping("/sendEmail")
+    public String sendEmail() {
+        String subject = "Test subject";
+        String body = "Test text";
+        emailSenderService.sendEmail(subject, body);
+        return "Email sent successfully to all users";
     }
 
 
