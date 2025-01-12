@@ -12,4 +12,8 @@ public interface UserService {
     List<UserDTO> getAllUsers();
 
     void deleteUser(Long id);
+
+
+    void saveVerifyUser(byte[] citizenshipImage, byte[] userImage);
+
 }
