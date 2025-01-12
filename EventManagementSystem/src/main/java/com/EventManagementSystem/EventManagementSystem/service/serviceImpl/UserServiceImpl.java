@@ -4,7 +4,9 @@ import com.EventManagementSystem.EventManagementSystem.dto.UserDTO;
 import com.EventManagementSystem.EventManagementSystem.exception.UserNotFoundException;
 import com.EventManagementSystem.EventManagementSystem.mapper.UserMapper;
 import com.EventManagementSystem.EventManagementSystem.model.User;
+import com.EventManagementSystem.EventManagementSystem.model.VerifyUser;
 import com.EventManagementSystem.EventManagementSystem.repository.UserRepository;
+import com.EventManagementSystem.EventManagementSystem.repository.VerifyUserRepository;
 import com.EventManagementSystem.EventManagementSystem.service.UserService;
 
 
@@ -17,10 +19,17 @@ import java.util.stream.Collectors;
 @Service
 public class UserServiceImpl implements UserService {
 
+
+
+
     private final UserRepository userRepository;
-    public UserServiceImpl(UserRepository userRepository) {
+    private final VerifyUserRepository verifyUserRepository;
+    public UserServiceImpl(UserRepository userRepository, VerifyUserRepository verifyUserRepository) {
         this.userRepository = userRepository;
+        this.verifyUserRepository = verifyUserRepository;
     }
+
+
 
     @Override
     public UserDTO createUser(UserDTO userDTO) {
@@ -44,5 +53,14 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new UserNotFoundException("User not found"));
         userRepository.deleteById(id);
 
+    }
+
+    @Override
+    public void saveVerifyUser(byte[] citizenshipImage, byte[] userImage) {
+        VerifyUser verifyUser = new VerifyUser();
+        verifyUser.setCitizenshipImage(citizenshipImage);
+        verifyUser.setUserImage(userImage);
+
+        verifyUserRepository.save(verifyUser);
     }
 }

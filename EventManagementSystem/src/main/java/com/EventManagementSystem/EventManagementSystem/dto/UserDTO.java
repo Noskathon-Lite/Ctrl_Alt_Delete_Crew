@@ -16,12 +16,9 @@ import lombok.NoArgsConstructor;
 
 public class UserDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
 
     @NotEmpty
-    @Size(min = 2,message ="Firstname must be minimum of 2 character")
+    @Size(min = 2,message ="Username must be minimum of 2 character")
     private String userName;
 
     @Email(message ="Email is not valid")

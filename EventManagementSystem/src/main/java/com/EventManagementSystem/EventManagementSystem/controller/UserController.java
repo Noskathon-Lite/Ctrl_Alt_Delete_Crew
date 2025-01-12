@@ -7,7 +7,9 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -40,5 +42,20 @@ public class UserController {
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    //For verify User
+    @PostMapping("/VerifyUser")
+    public ResponseEntity<String> uploadImages(
+            @RequestParam("citizenshipImage") MultipartFile citizenshipImage,
+            @RequestParam("userImage") MultipartFile userImage) {
+
+        try {
+            userService.saveVerifyUser(citizenshipImage.getBytes(), userImage.getBytes());
+            return ResponseEntity.ok("Images uploaded successfully.");
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload images.");
+        }
+    }
+
 
 }

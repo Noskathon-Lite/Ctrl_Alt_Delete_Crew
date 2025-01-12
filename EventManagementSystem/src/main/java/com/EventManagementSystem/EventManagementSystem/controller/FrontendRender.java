@@ -9,7 +9,7 @@ public class FrontendRender {
         return "signup";
     }
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public String home() {
         return "index";
     }
