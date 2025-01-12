@@ -16,15 +16,13 @@ import lombok.NoArgsConstructor;
 	
 		private long id;
 		
-		@OneToMany
-		@JoinColumn(name = "user_id", referencedColumnName = "id")
 		private User user;
 		
-		private String name;
+		private String eventName;
 		
 		private String description;
 		
-		private int date;
+		private LocalDateTime date;
 		
 		private String location;
 		
