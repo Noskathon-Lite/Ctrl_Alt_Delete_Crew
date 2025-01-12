@@ -1,5 +1,6 @@
 package com.EventManagementSystem.EventManagementSystem.service;
 
+import com.EventManagementSystem.EventManagementSystem.dto.AuthRequest;
 import com.EventManagementSystem.EventManagementSystem.dto.UserDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,7 +19,9 @@ public interface UserService {
 
     String uploadImageForIdentifyUser(Long userId, MultipartFile citizenshipFile, MultipartFile userFile) throws IOException;
 
+
     byte[] downloadImageForIdentifyUser(Long userId, String imageType) throws IOException;
 
     String getImagePathForIdentifyUser(Long userId, String imageType);
+
 }

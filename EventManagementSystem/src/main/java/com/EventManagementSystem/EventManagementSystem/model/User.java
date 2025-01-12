@@ -3,6 +3,8 @@ package com.EventManagementSystem.EventManagementSystem.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -24,4 +26,7 @@ public class User {
     private String password;
 
     private String role;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Event> events; // One-to-Many relationship
 }
