@@ -134,3 +134,16 @@
   .footer:hover{
     text-decoration: underline;
   }
+  .bx-hide{
+    cursor: pointer;
+	}
+	#bx-show-login{
+	    display: none ;
+	    cursor:pointer;
+	}
+	
+.show-hide_buttons{
+    position: absolute;
+    right: 0rem;
+    top: 0.9rem;
+  }
