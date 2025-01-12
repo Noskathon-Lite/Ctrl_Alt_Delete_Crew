@@ -1,5 +1,6 @@
 package com.EventManagementSystem.EventManagementSystem.service;
 
+import com.EventManagementSystem.EventManagementSystem.dto.AuthRequest;
 import com.EventManagementSystem.EventManagementSystem.dto.UserDTO;
 import org.springframework.stereotype.Service;
 
@@ -16,4 +17,5 @@ public interface UserService {
 
     void saveVerifyUser(byte[] citizenshipImage, byte[] userImage);
 
+    String verify(AuthRequest authRequest);
 }

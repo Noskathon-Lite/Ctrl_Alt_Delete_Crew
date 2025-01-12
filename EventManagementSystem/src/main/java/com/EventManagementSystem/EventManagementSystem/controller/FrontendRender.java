@@ -13,6 +13,10 @@ public class FrontendRender {
     public String home() {
         return "index";
     }
+//    @GetMapping("/login")
+//    public String login() {
+//        return "login";
+//    }
     
     @GetMapping("/signin")
     public String signin() {

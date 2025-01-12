@@ -1,6 +1,7 @@
 package com.EventManagementSystem.EventManagementSystem.controller;
 
 
+import com.EventManagementSystem.EventManagementSystem.dto.AuthRequest;
 import com.EventManagementSystem.EventManagementSystem.dto.UserDTO;
 import com.EventManagementSystem.EventManagementSystem.service.UserService;
 import jakarta.validation.Valid;
@@ -21,16 +22,20 @@ public class UserController {
         this.userService = userService;
     }
 
+    @PostMapping("/login")
+    public String login(@RequestBody AuthRequest authRequest){
+        return userService.verify(authRequest);
+    }
 
     // API to create a new user
-    @PostMapping
+    @PostMapping("/register-user")
     public ResponseEntity<UserDTO> createUser(@Valid @RequestBody UserDTO userDTO) {
         UserDTO createdUser = userService.createUser(userDTO);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
     // API to get all users
-    @GetMapping
+    @GetMapping("/get-all-users")
     public ResponseEntity<List<UserDTO>> getAllUsers() {
         List<UserDTO> users = userService.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
