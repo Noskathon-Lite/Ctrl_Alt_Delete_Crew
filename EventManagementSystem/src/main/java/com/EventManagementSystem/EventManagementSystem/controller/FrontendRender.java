@@ -24,7 +24,6 @@ import java.util.List;
 public class FrontendRender {
 	
     private final UserService userService;
-    private final EventService eventService;
     public FrontendRender(UserService userService, EventService eventService) {
         this.userService = userService;
         this.eventService = eventService;
