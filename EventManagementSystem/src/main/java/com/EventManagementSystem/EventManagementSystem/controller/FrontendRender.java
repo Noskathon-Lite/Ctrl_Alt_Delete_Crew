@@ -2,8 +2,12 @@ package com.EventManagementSystem.EventManagementSystem.controller;
 
 import org.springframework.ui.Model;
 
+import com.EventManagementSystem.EventManagementSystem.dto.EventDTO;
 import com.EventManagementSystem.EventManagementSystem.dto.UserDTO;
+import com.EventManagementSystem.EventManagementSystem.service.EventService;
 import com.EventManagementSystem.EventManagementSystem.service.UserService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,10 +19,15 @@ import java.util.List;
 
 @Controller
 public class FrontendRender {
+	
     private final UserService userService;
     public FrontendRender(UserService userService) {
         this.userService = userService;
     }
+    
+    @Autowired
+    private EventService eventService;
+    
     @GetMapping("/admin/admin-dashboard")
     public String adminDashboard() {
         return "admin/admin__dashboard";
@@ -29,6 +38,13 @@ public class FrontendRender {
         List<UserDTO> users = userService.getAllUsers(); // Fetch users from the service
         model.addAttribute("users", users);
         return "admin/admin__all__users";
+    }
+    
+    @GetMapping("/admin/admin-all-events")
+    public String adminAllEvents(Model model) {
+    	List<EventDTO> events = eventService.getAllEvents();
+    	model.addAttribute("events",events);
+    	return "admin/admin_all_events";
     }
 
     @GetMapping("/")
