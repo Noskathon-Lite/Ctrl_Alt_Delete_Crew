@@ -5,10 +5,10 @@
   body {
     margin: 0;
     font-family: "Poppins", sans-serif;
-    background: #333;
+    background: #f9f9f9;
   }
   h1 {
-    color: #fff;
+    color: #000;
     text-align: center;
     margin: 3em 0;
     font-size: 3em;
@@ -17,20 +17,20 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: #fff;
-    background: #121315;
+    color: #000;
+    background: #f9f9f9;
   }
   footer ul {
     list-style: none;
   }
   footer p {
-    color: #fff;
+    color: #000;
     max-width: 25em;
     font-size: 0.9em;
     line-height: 23px;
   }
   footer a {
-    color: #fff;
+    color: #000;
     text-decoration: none;
   }
   footer .container {
