@@ -31,7 +31,7 @@ public class SecurityConfig {
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                         .requestMatchers("/user/**").hasRole("USER")
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/sign-in","/sign-up")
+                        .requestMatchers("/sign-in","/sign-up","/api/events/**","/api/events/express-interest/{userId}")
                         .permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form
