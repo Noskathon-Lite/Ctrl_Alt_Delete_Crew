@@ -56,30 +56,7 @@ public class EventServiceimpl implements EventService{
 	public List<Event> getEvents() {
 		return eventRepository.findAll();
 	}
-	@Override
-	public void createEvent(EventDTO eventDTO) {
-	        // Fetch the user by ID
-	        Optional<User> userOptional = userRepository.findById(eventDTO.getUser().getId());
 
-	        if (userOptional.isPresent()) {
-	            User user = userOptional.get();
-
-	            // Create a new Event object
-	            Event event = new Event();
-	            event.setUser(user); // Associate the user
-	            event.setEventName(eventDTO.getEventName());
-	            event.setDescription(eventDTO.getDescription());
-	            event.setDate(eventDTO.getDate());
-	            event.setLocation(eventDTO.getLocation());
-	            event.setParticipants(eventDTO.getParticipants());
-	            event.setCreatedAt(LocalDateTime.now());
-
-	            // Save the event
-	            eventRepository.save(event);
-	        } else {
-	            throw new RuntimeException("User with ID " + eventDTO.getUser().getId() + " not found!");
-	        }
-	    }
 
 		@Override
 		public void deleteEvent(Long id) {
