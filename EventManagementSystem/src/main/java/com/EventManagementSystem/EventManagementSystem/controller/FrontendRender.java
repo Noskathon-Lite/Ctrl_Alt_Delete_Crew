@@ -1,6 +1,7 @@
 package com.EventManagementSystem.EventManagementSystem.controller;
 
-import ch.qos.logback.core.model.Model;
+import org.springframework.ui.Model;
+
 import com.EventManagementSystem.EventManagementSystem.dto.UserDTO;
 import com.EventManagementSystem.EventManagementSystem.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
+import java.util.List;
 
 @Controller
 public class FrontendRender {
@@ -22,7 +25,9 @@ public class FrontendRender {
     }
 
     @GetMapping("/admin/admin-all-users")
-    public String adminAllUsers() {
+    public String adminAllUsers(Model model) {
+        List<UserDTO> users = userService.getAllUsers(); // Fetch users from the service
+        model.addAttribute("users", users);
         return "admin/admin__all__users";
     }
 
@@ -39,7 +44,6 @@ public class FrontendRender {
 
     @GetMapping("/sign-up")
     public String signup(Model model) {
-
         return "signup";
     }
     @PostMapping("/sign-up")
@@ -48,6 +52,7 @@ public class FrontendRender {
         return "redirect:/register?success";
     }
     
+
 
     
     @GetMapping("/footer")
