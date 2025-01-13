@@ -5,7 +5,7 @@
   body {
     margin: 0;
     font-family: "Poppins", sans-serif;
-    background: #f9f9f9;
+    background: #d7c7c78c;
   }
   h1 {
     color: #000;
@@ -18,7 +18,7 @@
     margin-top: 4rem;
     padding: 0;
     color: #000;
-    background: #f9f9f9;
+    background: #d7c7c78c;
   }
   footer ul {
     list-style: none;
