@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group">
                         <label for="confirm-password"></label>
-                        <input type="confirm-password" name="confirm-password" id="confirm_password" placeholder="Confirm-Password">
+                        <input type="password" name="confirm-password" id="confirm_password" placeholder="Confirm-Password">
                         <div class="show-hide_buttons">
                             <i class='bx bx-show' id="bx-show-confirm" onclick="hidePassword('confirm')"></i>
                             <i class='bx bx-hide' id="bx-hide-confirm" onclick="showPassword('confirm')"></i>
@@ -51,7 +51,7 @@
                 <figure>
                     <img th:src="@{images/signup-img.jpeg}" alt="Signup Image">
                 </figure>
-                <a href="/signin" class="signup-image-link">I am already a member</a>
+                <a th:href="@{/sign-in}" class="signup-image-link">I am already a member</a>
             </div>
         </div>
     </div>
