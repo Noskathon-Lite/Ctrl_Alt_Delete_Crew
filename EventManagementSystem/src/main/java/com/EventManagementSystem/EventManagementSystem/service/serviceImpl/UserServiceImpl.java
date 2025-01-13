@@ -46,11 +46,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO createUser(UserDTO userDTO) {
+    public String createUser(UserDTO userDTO) {
         User user = UserMapper.INSTANCE.convertDtoToEntity(userDTO);
         user.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
-        User savedUser = userRepository.save(user);
-        return UserMapper.INSTANCE.convertEntityToDto(savedUser);
+        user.setRole("ROLE_USER");
+//        User savedUser = userRepository.save(user);
+        userRepository.save(user);
+        return "User Created Successfully";
     }
 
     @Override
@@ -167,6 +169,5 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("Invalid image type: " + imageType);
         }
     }
-
 
 }
