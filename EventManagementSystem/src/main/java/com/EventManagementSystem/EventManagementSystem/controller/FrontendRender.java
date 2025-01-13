@@ -1,18 +1,28 @@
 package com.EventManagementSystem.EventManagementSystem.controller;
 
-import ch.qos.logback.core.model.Model;
+import com.EventManagementSystem.EventManagementSystem.dto.EventDTO;
+import com.EventManagementSystem.EventManagementSystem.model.Event;
+import com.EventManagementSystem.EventManagementSystem.service.EventService;
+import org.springframework.ui.Model;
+
 import com.EventManagementSystem.EventManagementSystem.dto.UserDTO;
 import com.EventManagementSystem.EventManagementSystem.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
+import java.util.List;
 
 @Controller
 public class FrontendRender {
     private final UserService userService;
-    public FrontendRender(UserService userService) {
+    private final EventService eventService;
+    public FrontendRender(UserService userService, EventService eventService) {
         this.userService = userService;
+        this.eventService = eventService;
     }
     @GetMapping("/admin/admin-dashboard")
     public String adminDashboard() {
@@ -20,12 +30,16 @@ public class FrontendRender {
     }
 
     @GetMapping("/admin/admin-all-users")
-    public String adminAllUsers() {
+    public String adminAllUsers(Model model) {
+        List<UserDTO> users = userService.getAllUsers(); // Fetch users from the service
+        model.addAttribute("users", users);
         return "admin/admin__all__users";
     }
 
     @GetMapping("/")
-    public String home() {
+    public String home(Model model) {
+        List<Event> events = eventService.getEvents();
+        model.addAttribute("events", events);
         return "index";
     }
 
@@ -37,7 +51,6 @@ public class FrontendRender {
 
     @GetMapping("/sign-up")
     public String signup(Model model) {
-
         return "signup";
     }
     @PostMapping("/sign-up")
@@ -45,6 +58,14 @@ public class FrontendRender {
         userService.createUser(userDTO); // Save user using service
         return "redirect:/register?success";
     }
+    
 
+
+    
+    @GetMapping("/footer")
+    public String getfot() {
+        return "footer";
+    }
+    
     
 }
