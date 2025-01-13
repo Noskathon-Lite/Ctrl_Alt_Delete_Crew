@@ -11,7 +11,7 @@ public interface EventMapper {
 	
 	EventMapper INSTANCE = Mappers.getMapper(EventMapper.class);
 	
-	@Mapping(target = "id", ignore = true)
+//	@Mapping(target = "id", ignore = true)
      Event convertDtoToEntity(EventDTO eventDTO);
 
     EventDTO convertEntityToDto(Event event);
