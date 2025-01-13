@@ -35,7 +35,9 @@
                         <p class="event_titles">Location: <span th:text="${event.getLocation()}">kathmandu</span></p>
                         <p class="event_titles">Date: <span th:text="${event.getDate()}">24 Jan 2025</span></p>
                         <p class="event_titles">Event Creater: <span>Abhi Mahato</span></p>
-                        <button>Enroll</button>
+                        <form th:action="@{/api/events/express-interest}" method="post">
+                            <button type="submit">Enroll</button>
+                        </form>
                     </div>
                     <div class="event_image">
                         <img th:src="@{images/cleanup.jpg}" alt="">
