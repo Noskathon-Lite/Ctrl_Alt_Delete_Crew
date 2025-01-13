@@ -16,7 +16,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
         // Check user roles and set the redirect URL accordingly
         if (authentication.getAuthorities().stream().anyMatch(r -> r.getAuthority().equals("ROLE_ADMIN"))) {
-            redirectURL = "/admin/admin-dashboard";
+            redirectURL = "/admin/admin-all-users";
         } else if (authentication.getAuthorities().stream().anyMatch(r -> r.getAuthority().equals("ROLE_USER"))) {
             redirectURL = "/";
         }
