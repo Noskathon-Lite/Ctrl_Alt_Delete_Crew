@@ -26,14 +26,14 @@
         <h1 class="event">Events</h1>
         
         <div class="EMS_events">
-                <div class="EMS_event">
-                    <p class="event_name">Bagmati cleanup program</p>
+                <div class="EMS_event" th:each="event : ${events}">
+                    <p class="event_name" th:text="${event.getEventName()}">Bagmati cleanup program</p>
                         <hr>
                    <div class="event_section">
                     <div >
-                        <p class="event_titles">Event Desctiption: <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse pariatur delectus, sint commodi eius quas nostrum illo et itaque repellat quod est amet? Est nostrum animi tenetur quod doloribus iusto!</span></p>
-                        <p class="event_titles">Location: <span>kathmandu</span></p>
-                        <p class="event_titles">Date: <span>24 Jan 2025</span></p>
+                        <p class="event_titles">Event Desctiption: <span th:text="${event.getDescription()}">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse pariatur delectus, sint commodi eius quas nostrum illo et itaque repellat quod est amet? Est nostrum animi tenetur quod doloribus iusto!</span></p>
+                        <p class="event_titles">Location: <span th:text="${event.getLocation()}">kathmandu</span></p>
+                        <p class="event_titles">Date: <span th:text="${event.getDate()}">24 Jan 2025</span></p>
                         <p class="event_titles">Event Creater: <span>Abhi Mahato</span></p>
                         <button>Enroll</button>
                     </div>
@@ -44,23 +44,7 @@
                     
                 </div>
                 
-                <div class="EMS_event">
-                    <p class="event_name">Afforation program in kathmandu</p>
-                        <hr>
-                   <div class="event_section">
-                    <div >
-                        <p class="event_titles">Event Desctiption: <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse pariatur delectus, sint commodi eius quas nostrum illo et itaque repellat quod est amet? Est nostrum animi tenetur quod doloribus iusto!</span></p>
-                        <p class="event_titles">Location: <span>kathmandu</span></p>
-                        <p class="event_titles">Date: <span>29 Jan 2025</span></p>
-                        <p class="event_titles">Event Creater: <span>Abhi Mahato</span></p>
-                        <button>Enroll</button>
-                    </div>
-                    <div class="event_image">
-                        <img th:src="@{images/afforestation.webp}" alt="">
-                    </div>
-                   </div>
-                    
-                </div>
+
     
                 <div class="EMS_event">
                     <p class="event_name">Afforation program in kathmandu</p>
@@ -79,23 +63,7 @@
                    </div>
                     
                 </div>
-                <div class="EMS_event">
-                    <p class="event_name">Bagmati cleanup program</p>
-                        <hr>
-                   <div class="event_section">
-                    <div >
-                        <p class="event_titles">Event Desctiption: <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse pariatur delectus, sint commodi eius quas nostrum illo et itaque repellat quod est amet? Est nostrum animi tenetur quod doloribus iusto!</span></p>
-                        <p class="event_titles">Location: <span>kathmandu</span></p>
-                        <p class="event_titles">Date: <span>24 Jan 2025</span></p>
-                        <p class="event_titles">Event Creater: <span>Abhi Mahato</span></p>
-                        <button>Enroll</button>
-                    </div>
-                    <div class="event_image">
-                        <img th:src="@{images/cleanup.jpg}" alt="">
-                    </div>
-                   </div>
-                    
-                </div>
+
         </div>
     </div>
 </Section>

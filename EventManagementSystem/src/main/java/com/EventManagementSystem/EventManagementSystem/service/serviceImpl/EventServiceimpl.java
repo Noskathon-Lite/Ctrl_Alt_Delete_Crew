@@ -1,6 +1,7 @@
 package com.EventManagementSystem.EventManagementSystem.service.serviceImpl;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,13 @@ public class EventServiceimpl implements EventService{
 		private UserRepository userRepository;
 		@Autowired
 		private EventRepository eventRepository;
-		
-	    public void createEvent(EventDTO eventDTO) {
+
+	@Override
+	public List<Event> getEvents() {
+		return eventRepository.findAll();
+	}
+	@Override
+	public void createEvent(EventDTO eventDTO) {
 	        // Fetch the user by ID
 	        Optional<User> userOptional = userRepository.findById(eventDTO.getUser().getId());
 
