@@ -1,5 +1,8 @@
 package com.EventManagementSystem.EventManagementSystem.controller;
 
+import com.EventManagementSystem.EventManagementSystem.dto.EventDTO;
+import com.EventManagementSystem.EventManagementSystem.model.Event;
+import com.EventManagementSystem.EventManagementSystem.service.EventService;
 import org.springframework.ui.Model;
 
 import com.EventManagementSystem.EventManagementSystem.dto.UserDTO;
@@ -16,8 +19,10 @@ import java.util.List;
 @Controller
 public class FrontendRender {
     private final UserService userService;
-    public FrontendRender(UserService userService) {
+    private final EventService eventService;
+    public FrontendRender(UserService userService, EventService eventService) {
         this.userService = userService;
+        this.eventService = eventService;
     }
     @GetMapping("/admin/admin-dashboard")
     public String adminDashboard() {
@@ -32,7 +37,9 @@ public class FrontendRender {
     }
 
     @GetMapping("/")
-    public String home() {
+    public String home(Model model) {
+        List<Event> events = eventService.getEvents();
+        model.addAttribute("events", events);
         return "index";
     }
 
