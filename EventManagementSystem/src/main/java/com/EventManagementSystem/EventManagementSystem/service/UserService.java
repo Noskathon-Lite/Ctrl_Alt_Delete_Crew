@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public interface UserService {
-    UserDTO createUser(UserDTO userDTO);
+    String createUser(UserDTO userDTO);
 
     List<UserDTO> getAllUsers();
 

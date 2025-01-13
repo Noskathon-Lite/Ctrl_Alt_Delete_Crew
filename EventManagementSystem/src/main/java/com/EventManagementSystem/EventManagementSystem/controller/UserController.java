@@ -33,12 +33,12 @@ public class UserController {
 
 
 
-    // API to create a new user
-    @PostMapping("/register-user")
-    public ResponseEntity<UserDTO> createUser(@Valid @RequestBody UserDTO userDTO) {
-        UserDTO createdUser = userService.createUser(userDTO);
-        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
-    }
+//    // API to create a new user
+//    @PostMapping("/register-user")
+//    public ResponseEntity<UserDTO> createUser(@Valid @RequestBody UserDTO userDTO) {
+//        UserDTO createdUser = userService.createUser(userDTO);
+//        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
+//    }
 
     // API to get all users
     @GetMapping("/get-all-users")
