@@ -65,7 +65,7 @@ public class UserController {
     @GetMapping("/sendEmail")
     public String sendEmail() {
         String subject = "Test subject";
-        String body = "Test text";
+        String body = "An event is created";
         emailSenderService.sendEmail(subject, body);
         return "Email sent successfully to all users";
     }
