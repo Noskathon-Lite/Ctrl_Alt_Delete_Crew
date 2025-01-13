@@ -31,15 +31,16 @@ public class EventController {
     	return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PostMapping("/express-interest/{userId}")
-    public ResponseEntity<String> expressInterest(@PathVariable Long userId) {
+    @PostMapping("/express-interest")
+    public ResponseEntity<String> expressInterest() {
         // Use eventId = 1 directly
-        String eventCreatorEmail = eventService.getEventCreatorEmail(); // No need to pass eventId anymore
+//        String eventCreatorEmail = eventService.getEventCreatorEmail(); // No need to pass eventId anymore
+        String eventCreatorEmail = "abinash.201603@ncit.edu.np"; // No need to pass eventId anymore
 
         if (eventCreatorEmail != null) {
             // Compose and send the email as before
             String subject = "User Interested in Your Event";
-            String text = "Hello,\n\nUser with ID: " + userId + " has expressed interest in your event!";
+            String text = "Hello,\n\nUser with ID:   has expressed interest in your event!";
             emailService.sendEmail(eventCreatorEmail, subject, text);
             return ResponseEntity.ok("Interest sent successfully!");
         } else {
