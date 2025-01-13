@@ -35,11 +35,9 @@ public class UserServiceImpl implements UserService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final AuthenticationManager authManager;
     private final UserRepository userRepository;
-    private final VerifyUserRepository verifyUserRepository;
         private final IdentifyRepository identifyRepository;
-    public UserServiceImpl(UserRepository userRepository, VerifyUserRepository verifyUserRepository , AuthenticationManager authManager, IdentifyRepository identifyRepository) {
+    public UserServiceImpl(UserRepository userRepository, AuthenticationManager authManager, IdentifyRepository identifyRepository) {
         this.userRepository = userRepository;
-        this.verifyUserRepository = verifyUserRepository;
         this.authManager = authManager;
         this.bCryptPasswordEncoder = new BCryptPasswordEncoder();
       this.identifyRepository = identifyRepository;
