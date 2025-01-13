@@ -3,12 +3,16 @@ package com.EventManagementSystem.EventManagementSystem.service.serviceImpl;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.EventManagementSystem.EventManagementSystem.dto.EventDTO;
+import com.EventManagementSystem.EventManagementSystem.dto.UserDTO;
 import com.EventManagementSystem.EventManagementSystem.exception.UserNotFoundException;
+import com.EventManagementSystem.EventManagementSystem.mapper.EventMapper;
+import com.EventManagementSystem.EventManagementSystem.mapper.UserMapper;
 import com.EventManagementSystem.EventManagementSystem.model.Event;
 import com.EventManagementSystem.EventManagementSystem.model.User;
 import com.EventManagementSystem.EventManagementSystem.repository.EventRepository;
@@ -84,6 +88,15 @@ public class EventServiceimpl implements EventService{
 			eventRepository.deleteById(id);
 			
 		}
+		@Override
+		public List<EventDTO> getAllEvents() {
+			List<Event> events = eventRepository.findAll();
+	        return events.stream().map(EventMapper.INSTANCE::convertEntityToDto).collect(Collectors.toList());
+		}
+		
+
+	    
+	     
 
 	public String getEventCreatorEmail() {
 		Optional<Event> eventOptional = eventRepository.findById(5L); // Hardcoded eventId = 1
