@@ -1,6 +1,7 @@
 package com.EventManagementSystem.EventManagementSystem.controller;
 
 import com.EventManagementSystem.EventManagementSystem.dto.EventDTO;
+import com.EventManagementSystem.EventManagementSystem.service.EmailService;
 import com.EventManagementSystem.EventManagementSystem.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,9 @@ public class EventController {
     @Autowired
     private EventService eventService;
 
+    @Autowired
+    private EmailService emailService;
+
     @PostMapping("/create")
     public ResponseEntity<String> createEvent(@RequestBody EventDTO eventDTO) {
         eventService.createEvent(eventDTO);
@@ -26,7 +30,22 @@ public class EventController {
     	eventService.deleteEvent(id);
     	return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    	
-    	
-    
+
+    @PostMapping("/express-interest/{userId}")
+    public ResponseEntity<String> expressInterest(@PathVariable Long userId) {
+        // Use eventId = 1 directly
+        String eventCreatorEmail = eventService.getEventCreatorEmail(); // No need to pass eventId anymore
+
+        if (eventCreatorEmail != null) {
+            // Compose and send the email as before
+            String subject = "User Interested in Your Event";
+            String text = "Hello,\n\nUser with ID: " + userId + " has expressed interest in your event!";
+            emailService.sendEmail(eventCreatorEmail, subject, text);
+            return ResponseEntity.ok("Interest sent successfully!");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Event not found.");
+        }
+    }
+
+
 }

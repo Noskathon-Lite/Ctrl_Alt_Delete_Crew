@@ -20,7 +20,9 @@ public interface EventService {
 	void createEvent(EventDTO eventDTO);
 
 	void deleteEvent(Long id);
-	
+
+
+	String getEventCreatorEmail();
 	
 
 }

@@ -30,8 +30,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/css/**","/css/admin/**", "/js/**", "/images/**").permitAll()
                         .requestMatchers("/user/**").hasRole("USER")
+
                         .requestMatchers("/admin/**","/css/admin/**" ).hasRole("ADMIN")
-                        .requestMatchers("/sign-in","/sign-up","/api/events/**")
+                        .requestMatchers("/sign-in","/sign-up","/api/events/**","/api/events/express-interest/{userId}")
+
                         .permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form

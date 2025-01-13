@@ -28,6 +28,30 @@ public class EventServiceimpl implements EventService{
 		@Autowired
 		private EventRepository eventRepository;
 
+
+	public void createEvent(EventDTO eventDTO) {
+		// Fetch the user by ID
+		Optional<User> userOptional = userRepository.findById(eventDTO.getUser().getId());
+
+		if (userOptional.isPresent()) {
+			User user = userOptional.get();
+
+			// Create a new Event object
+			Event event = new Event();
+			event.setUser(user); // Associate the user
+			event.setEventName(eventDTO.getEventName());
+			event.setDescription(eventDTO.getDescription());
+			event.setDate(eventDTO.getDate());
+			event.setLocation(eventDTO.getLocation());
+			event.setParticipants(eventDTO.getParticipants());
+			event.setCreatedAt(LocalDateTime.now());
+
+			// Save the event
+			eventRepository.save(event);
+		} else {
+			throw new RuntimeException("User with ID " + eventDTO.getUser().getId() + " not found!");
+		}
+	}
 	@Override
 	public List<Event> getEvents() {
 		return eventRepository.findAll();
@@ -64,7 +88,6 @@ public class EventServiceimpl implements EventService{
 			eventRepository.deleteById(id);
 			
 		}
-
 		@Override
 		public List<EventDTO> getAllEvents() {
 			List<Event> events = eventRepository.findAll();
@@ -74,6 +97,11 @@ public class EventServiceimpl implements EventService{
 
 	    
 	     
-	    
+
+	public String getEventCreatorEmail() {
+		Optional<Event> eventOptional = eventRepository.findById(5L); // Hardcoded eventId = 1
+		return eventOptional.map(event -> event.getUser().getEmail()).orElse(null);
+	}
+
 
 }
