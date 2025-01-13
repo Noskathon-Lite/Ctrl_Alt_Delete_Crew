@@ -27,8 +27,13 @@ public class EventServiceimpl implements EventService{
 		private UserRepository userRepository;
 		@Autowired
 		private EventRepository eventRepository;
-		
-	    public void createEvent(EventDTO eventDTO) {
+
+	@Override
+	public List<Event> getEvents() {
+		return eventRepository.findAll();
+	}
+	@Override
+	public void createEvent(EventDTO eventDTO) {
 	        // Fetch the user by ID
 	        Optional<User> userOptional = userRepository.findById(eventDTO.getUser().getId());
 

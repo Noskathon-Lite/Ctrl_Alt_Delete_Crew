@@ -5,32 +5,32 @@
   body {
     margin: 0;
     font-family: "Poppins", sans-serif;
-    background: #333;
+    background: #f9f9f9;
   }
   h1 {
-    color: #fff;
+    color: #000;
     text-align: center;
     margin: 3em 0;
     font-size: 3em;
   }
   footer {
     box-sizing: border-box;
-    margin: 0;
+    margin-top: 4rem;
     padding: 0;
-    color: #fff;
-    background: #121315;
+    color: #000;
+    background: #f9f9f9;
   }
   footer ul {
     list-style: none;
   }
   footer p {
-    color: #fff;
+    color: #000;
     max-width: 25em;
     font-size: 0.9em;
     line-height: 23px;
   }
   footer a {
-    color: #fff;
+    color: #000;
     text-decoration: none;
   }
   footer .container {
@@ -53,6 +53,10 @@
   .services-icons li {
     display: inline-block;
     margin: 0.5em 0.5em 0.5em 0;
+  }
+  .media-icons,.services-icons{
+    margin: 0 !important;
+    padding:0 !important;
   }
   .media-icons a {
     font-size: 1.1em;
